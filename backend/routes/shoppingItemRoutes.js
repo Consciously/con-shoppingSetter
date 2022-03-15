@@ -4,7 +4,7 @@ import {
 	createShoppingItem,
 	updateShoppingItem,
 	deleteShoppingItem
-} from '../controllers/shoppingControllers.js';
+} from '../controllers/shoppingItemControllers.js';
 
 const router = express.Router();
 
