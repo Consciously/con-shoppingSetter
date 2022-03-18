@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import Store from '../models/shoppingStoreModel.js';
+import ShoppingItems from '../models/shoppingItemModel.js';
 
 // @desc Get all stores
 // @route GET /api/shopping/stores
@@ -16,13 +17,16 @@ const getStores = asyncHandler(async (req, res) => {
 // @access private
 
 const createStore = asyncHandler(async (req, res) => {
+	const shoppingItems = await ShoppingItems.find({});
+
 	if (!req.body.store) {
 		res.status(400);
 		throw new Error('Please add store a field');
 	}
 
 	const store = await Store.create({
-		store: req.body.store
+		store: req.body.store,
+		items: shoppingItems._id
 	});
 
 	res.status(200).json(store);

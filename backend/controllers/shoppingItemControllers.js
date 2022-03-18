@@ -8,7 +8,10 @@ import ShoppingStore from '../models/shoppingStoreModel.js';
 // @access private
 
 const getShoppingItems = asyncHandler(async (req, res) => {
-	const shoppingItems = await ShoppingItem.find();
+	const shoppingItems = await ShoppingItem.find().populate({
+		path: 'store',
+		select: ['store']
+	});
 
 	res.status(200).json(shoppingItems);
 });

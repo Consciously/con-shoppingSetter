@@ -1,0 +1,22 @@
+[
+	{
+		"_id": "6233906a732619a0b67bb3a7",
+		"text": "Milch",
+		"store": "623390ac313f4c2c4d522788"
+	},
+	{
+		"_id": "6233925ea57350bfaf693b73",
+		"text": "Butter",
+		"store": "623392fc608c94237a92ff62"
+	},
+	{
+		"_id": "6233926a20604fc076a1f7da",
+		"text": "Brot",
+		"store": "62339304a9756574f6cd21ce"
+	},
+	{
+		"_id": "623392ddaad7a52aa1dd7db1",
+		"text": "Eier",
+		"store": "6233930b09c555cf00040eb6"
+	}
+]

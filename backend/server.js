@@ -1,15 +1,22 @@
 import express from 'express';
-import dontenv from 'dotenv/config';
+import { URL } from 'url';
+import dotenv from 'dotenv';
 import colors from 'colors';
 import shoppingItem from './routes/shoppingItemRoutes.js';
 import stores from './routes/shoppingStoreRoutes.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
 import { connectDB } from './config/db.js';
 
+const dirEnv = new URL('./config/config.env', import.meta.url).pathname;
+
+dotenv.config({ path: dirEnv });
+
+connectDB();
+
 const port = process.env.PORT || 5000;
 const mode = process.env.NODE_ENV;
 
-connectDB();
+// connectDB();
 
 const app = express();
 
