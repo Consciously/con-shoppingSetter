@@ -1,15 +1,17 @@
 import asyncHandler from 'express-async-handler';
-import Store from '../models/shoppingStoreModel.js';
-import ShoppingItems from '../models/shoppingItemModel.js';
+import ShoppingStore from '../models/shoppingStoreModel.js';
 
 // @desc Get all stores
 // @route GET /api/shopping/stores
 // @access private
 
 const getStores = asyncHandler(async (req, res) => {
-	const stores = await Store.find();
+	const shoppingStore = await ShoppingStore.find().populate({
+		path: 'items',
+		select: ['entry', '-store']
+	});
 
-	res.status(200).json(stores);
+	res.status(200).json(shoppingStore);
 });
 
 // @desc Create new store
@@ -17,17 +19,15 @@ const getStores = asyncHandler(async (req, res) => {
 // @access private
 
 const createStore = asyncHandler(async (req, res) => {
-	const shoppingItems = await ShoppingItems.find({});
-
 	if (!req.body.store) {
 		res.status(400);
 		throw new Error('Please add store a field');
 	}
 
-	const store = await Store.create({
-		store: req.body.store,
-		items: shoppingItems._id
-	});
+	// const store = await Store.create({
+	// 	store: req.body.store,
+	// 	items: shoppingItems._id
+	// });
 
 	res.status(200).json(store);
 });

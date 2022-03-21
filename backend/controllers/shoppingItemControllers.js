@@ -1,5 +1,4 @@
 import asyncHandler from 'express-async-handler';
-import mongoose from 'mongoose';
 import ShoppingItem from '../models/shoppingItemModel.js';
 import ShoppingStore from '../models/shoppingStoreModel.js';
 
@@ -8,12 +7,26 @@ import ShoppingStore from '../models/shoppingStoreModel.js';
 // @access private
 
 const getShoppingItems = asyncHandler(async (req, res) => {
-	const shoppingItems = await ShoppingItem.find().populate({
+	const shoppingItems = await ShoppingItem.find({
+		store: req.params.storeId
+	}).populate({
 		path: 'store',
 		select: ['store']
 	});
 
-	res.status(200).json(shoppingItems);
+	const shoppingItemsModified = shoppingItems.reduce(
+		(entries, value, _, arr) => ({
+			...entries,
+			store: value.store,
+			entries: [...arr, value.entry]
+		}),
+		[]
+	);
+
+	res.status(200).json({
+		count: shoppingItemsModified.length,
+		data: shoppingItemsModified
+	});
 });
 
 // @desc Create new shopping items

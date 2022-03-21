@@ -2,8 +2,8 @@ import express from 'express';
 import { URL } from 'url';
 import dotenv from 'dotenv';
 import colors from 'colors';
-import shoppingItem from './routes/shoppingItemRoutes.js';
-import stores from './routes/shoppingStoreRoutes.js';
+import shoppingItems from './routes/shoppingItemRoutes.js';
+import shoppingStores from './routes/shoppingStoreRoutes.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
 import { connectDB } from './config/db.js';
 
@@ -23,8 +23,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/shopping/items', shoppingItem);
-app.use('/api/shopping/stores', stores);
+app.use('/api/shoppingItems', shoppingItems);
+app.use('/api/shoppingStores', shoppingStores);
 
 app.use(errorHandler);
 

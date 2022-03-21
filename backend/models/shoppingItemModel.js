@@ -1,17 +1,21 @@
 import mongoose from 'mongoose';
 
-const shoppingItemSchema = mongoose.Schema(
+const ShoppingItemSchema = mongoose.Schema(
 	{
 		store: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Store'
 		},
-		text: {
+		entry: {
 			type: String,
 			required: [true, 'Please add a text value']
 		}
 	},
-	{ timestamps: true, versionKey: false }
+	{ timestamps: true, versionKey: false },
+	{
+		toJSON: { virtuals: true },
+		toObject: { virtuals: true }
+	}
 );
 
-export default mongoose.model('ShoppingItem', shoppingItemSchema);
+export default mongoose.model('ShoppingItem', ShoppingItemSchema);

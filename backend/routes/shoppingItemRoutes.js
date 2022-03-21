@@ -6,7 +6,7 @@ import {
 	deleteShoppingItem
 } from '../controllers/shoppingItemControllers.js';
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router.route('/').get(getShoppingItems).post(createShoppingItem);
 router.route('/:id').put(updateShoppingItem).delete(deleteShoppingItem);

@@ -1,22 +1,82 @@
 [
 	{
 		"_id": "6233906a732619a0b67bb3a7",
-		"text": "Milch",
+		"entry": "Milch",
 		"store": "623390ac313f4c2c4d522788"
 	},
 	{
 		"_id": "6233925ea57350bfaf693b73",
-		"text": "Butter",
+		"entry": "Butter",
 		"store": "623392fc608c94237a92ff62"
 	},
 	{
 		"_id": "6233926a20604fc076a1f7da",
-		"text": "Brot",
+		"entry": "Brot",
 		"store": "62339304a9756574f6cd21ce"
 	},
 	{
 		"_id": "623392ddaad7a52aa1dd7db1",
-		"text": "Eier",
+		"entry": "Eier",
+		"store": "6233930b09c555cf00040eb6"
+	},
+	{
+		"_id": "62387dc89758df0182fa4d3f",
+		"entry": "Kekse",
+		"store": "623390ac313f4c2c4d522788"
+	},
+	{
+		"_id": "62387dd175d37b1aa04d3d16",
+		"entry": "Nuesse",
+		"store": "623392fc608c94237a92ff62"
+	},
+	{
+		"_id": "62387dddf678d2172bfae388",
+		"entry": "Marmelade",
+		"store": "62339304a9756574f6cd21ce"
+	},
+	{
+		"_id": "62387de804cdbb4a64118e5f",
+		"entry": "Nutella",
+		"store": "6233930b09c555cf00040eb6"
+	},
+	{
+		"_id": "62387df058bec4ace45d5c1f",
+		"entry": "Honig",
+		"store": "623390ac313f4c2c4d522788"
+	},
+	{
+		"_id": "62387df802181d83d8257862",
+		"entry": "Karotten",
+		"store": "623392fc608c94237a92ff62"
+	},
+	{
+		"_id": "62387e011074f4297838719a",
+		"entry": "Nudeln",
+		"store": "62339304a9756574f6cd21ce"
+	},
+	{
+		"_id": "62387e08c9b9c645016cbde3",
+		"entry": "Reis",
+		"store": "6233930b09c555cf00040eb6"
+	},
+	{
+		"_id": "62387e13cde9d5562e68bf0c",
+		"entry": "Sahne",
+		"store": "623390ac313f4c2c4d522788"
+	},
+	{
+		"_id": "62387e19466e4cfbd2ef93b6",
+		"entry": "Wurst",
+		"store": "623392fc608c94237a92ff62"
+	},
+	{
+		"_id": "62387e2171fb27b71b47c25b",
+		"entry": "Kaese",
+		"store": "62339304a9756574f6cd21ce"
+	},
+	{
+		"_id": "62387e2b3f6e456a6e5deb99",
+		"entry": "Tomaten",
 		"store": "6233930b09c555cf00040eb6"
 	}
 ]
