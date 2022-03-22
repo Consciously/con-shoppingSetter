@@ -6,16 +6,18 @@ import ShoppingStore from '../models/shoppingStoreModel.js';
 // @access private
 
 const getStores = asyncHandler(async (req, res) => {
-	const shoppingStore = await ShoppingStore.find().populate({
+	const shoppingStore = await ShoppingStore.find({
+		user: req.user.id
+	}).populate({
 		path: 'items',
 		select: ['entry', '-store']
 	});
 
-	res.status(200).json(shoppingStore);
+	res.status(200).json({ data: shoppingStore });
 });
 
 // @desc Create new store
-// @route POST /api/shoppingStores/:id
+// @route POST /api/shoppingStores/
 // @access private
 
 const createStore = asyncHandler(async (req, res) => {
@@ -25,7 +27,8 @@ const createStore = asyncHandler(async (req, res) => {
 	}
 
 	const createdShoppingStore = await ShoppingStore.create({
-		store: req.body.store
+		store: req.body.store,
+		user: req.user.id
 	});
 
 	res.status(200).json({ data: createdShoppingStore });
@@ -36,11 +39,23 @@ const createStore = asyncHandler(async (req, res) => {
 // @access private
 
 const updateStore = asyncHandler(async (req, res) => {
-	const store = await ShoppingStore.findById(req.params.id);
+	const shoppingStore = await ShoppingStore.findById(req.params.id);
 
-	if (!store) {
+	if (!shoppingStore) {
 		res.status(400);
 		throw new Error('Store not found');
+	}
+
+	// Check for user
+	if (!req.user) {
+		res.status(401);
+		throw new Error('User not found');
+	}
+
+	// Make sure the logged in user matches the shoppingUser
+	if (shoppingStore.user.toString() !== req.user.id) {
+		req.status(401);
+		throw new Error('User not authorized');
 	}
 
 	const updatedShoppingStore = await ShoppingStore.findByIdAndUpdate(
@@ -66,6 +81,17 @@ const deleteStore = asyncHandler(async (req, res) => {
 		throw new Error('Store not found');
 	}
 
+	// Check for user
+	if (!req.user) {
+		res.status(401);
+		throw new Error('User not found');
+	}
+
+	// Make sure the logged in user matches the shoppingUser
+	if (shoppingStore.user.toString() !== req.user.id) {
+		req.status(401);
+		throw new Error('User not authorized');
+	}
 	await ShoppingStore.findByIdAndRemove(req.params.id);
 
 	res.status(200).json({ data: req.params.id });

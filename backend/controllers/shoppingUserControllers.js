@@ -79,7 +79,11 @@ const loginShoppingUser = asyncHandler(async (req, res) => {
 // @route GET /api/shoppingUsers/me
 // @access private
 
-const getMe = asyncHandler(async (req, res) => {});
+const getMe = asyncHandler(async (req, res) => {
+	res.status(200).json({
+		name: req.user.name
+	});
+});
 
 export { registerShoppingUser, loginShoppingUser, getMe };
 
