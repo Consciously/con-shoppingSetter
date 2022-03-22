@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import colors from 'colors';
 import shoppingItems from './routes/shoppingItemRoutes.js';
 import shoppingStores from './routes/shoppingStoreRoutes.js';
+import shoppingUsers from './routes/shoppingUserRoutes.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
 import { connectDB } from './config/db.js';
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/shoppingItems', shoppingItems);
 app.use('/api/shoppingStores', shoppingStores);
+app.use('/api/shoppingUsers', shoppingUsers);
 
 app.use(errorHandler);
 

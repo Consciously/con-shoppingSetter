@@ -14,11 +14,6 @@ const ShoppingUserSchema = mongoose.Schema(
 		password: {
 			type: String,
 			required: [true, 'Please add a password']
-		},
-		user: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'ShoppingUser',
-			required: true
 		}
 	},
 	{

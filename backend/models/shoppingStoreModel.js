@@ -6,6 +6,11 @@ const ShoppingStoreSchema = mongoose.Schema(
 			type: String,
 			required: [true, 'Please add a store name'],
 			unique: [true, 'Store already exists']
+		},
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'ShoppingUser',
+			required: true
 		}
 	},
 	{
