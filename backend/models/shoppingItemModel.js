@@ -4,7 +4,8 @@ const ShoppingItemSchema = mongoose.Schema(
 	{
 		store: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Store'
+			ref: 'Store',
+			required: true
 		},
 		entry: {
 			type: String,
