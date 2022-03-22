@@ -3,7 +3,7 @@ import ShoppingItem from '../models/shoppingItemModel.js';
 import ShoppingStore from '../models/shoppingStoreModel.js';
 
 // @desc Get all shopping list items
-// @route GET /api/shopping/items
+// @route GET /api/shoppingStores/:storeId/items
 // @access private
 
 const getShoppingItems = asyncHandler(async (req, res) => {
@@ -30,24 +30,27 @@ const getShoppingItems = asyncHandler(async (req, res) => {
 });
 
 // @desc Create new shopping items
-// @route POST /api/shopping/items
+// @route POST /api/shoppingStore/:storeId/items
 // @access private
 
 const createShoppingItem = asyncHandler(async (req, res) => {
-	if (!req.body.text) {
+	if (!req.body.entry) {
 		res.status(400);
-		throw new Error('Please add a text field');
+		throw new Error('Please add an entry field');
 	}
 
+	req.body.store = req.params.storeId;
+
 	const shoppingItem = await ShoppingItem.create({
-		text: req.body.text
+		entry: req.body.entry,
+		store: req.body.store
 	});
 
 	res.status(200).json(shoppingItem);
 });
 
 // @desc Update shopping item
-// @route PUT /api/shopping/items/:id
+// @route PUT /api/shoppingStore/:storeId/items
 // @access private
 
 const updateShoppingItem = asyncHandler(async (req, res) => {
@@ -64,11 +67,11 @@ const updateShoppingItem = asyncHandler(async (req, res) => {
 		{ new: true }
 	);
 
-	res.status(200).json(updatedShoppingItem);
+	res.status(200).json({ data: updatedShoppingItem });
 });
 
 // @desc Delete shopping item
-// @route DELETE /api/shopping/items/:id
+// @route DELETE /api/shoppingStore/:storeId/items
 // @access private
 
 const deleteShoppingItem = asyncHandler(async (req, res) => {
@@ -81,7 +84,7 @@ const deleteShoppingItem = asyncHandler(async (req, res) => {
 
 	await ShoppingItem.findByIdAndRemove(req.params.id);
 
-	res.status(200).json({ id: req.params.id });
+	res.status(200).json({ data: req.params.id });
 });
 
 export {
