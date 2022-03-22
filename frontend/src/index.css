@@ -1,13 +1,131 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1rem;
+	color: #121212;
+	height: 100vh;
+}
+
+h1 {
+	font-size: clamp(6.561rem, 15vw, 7.873rem);
+	line-height: 1.65;
+	margin-bottom: 1.25rem;
+}
+
+h2 {
+	font-size: clamp(3.645em, 15vw, 4.374rem);
+	line-height: 1.55;
+	margin-bottom: 1.25rem;
+}
+
+h3 {
+	font-size: clamp(2.025rem, 15vw, 2.43rem);
+	line-height: 1.45;
+	margin-bottom: 0.625rem;
+}
+
+h4 {
+	font-size: clamp(1.125rem, 15vw, 1.35rem);
+	line-height: 1.35;
+}
+
+p {
+	font-size: clamp(1rem, 15vw, 1.125rem);
+	line-height: 1.25;
+}
+
+main {
+	height: 100vh;
+}
+
+.container {
+	width: 100%;
+	max-width: 1140px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.main__header {
+	background-color: #4d6975;
+	height: 25vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main__navbar {
+	width: 40vw;
+}
+
+.main__navbar ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.main__navbar li {
+	text-align: center;
+}
+
+@media (max-width: 375px) {
+	.main__navbar ul {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: #4d6975;
+	appearance: button;
+	background-color: #bfd9e4;
+	border-radius: 0.25rem;
+	padding: 0.25rem;
+}
+
+.btn svg {
+	margin-right: 0.5rem;
+}
+
+.main__navbar a {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: #bfd9e4;
+	padding: 0.5rem;
+	border-bottom: 2px solid transparent;
+	transition: all 0.3s ease-in-out;
+}
+
+.main__navbar a svg {
+	margin-right: 0.5rem;
+}
+
+.main__navbar a:hover,
+.main__navbar a:focus,
+.main__navbar--active {
+	color: #d3e7f0;
+	border-color: #d3e7f0;
 }
