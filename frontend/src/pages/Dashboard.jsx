@@ -1,15 +1,32 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import {
+	getShoppingStore,
+	reset
+} from '../features/shoppingStore/shoppingStoreSlice';
 
 function Dashboard() {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const { user } = useSelector(state => state.auth);
+	const { shoppingStore, isLoading, isError, message } = useSelector(
+		state => state.shoppingStore
+	);
+
+	console.log(shoppingStore);
 
 	useEffect(() => {
+		if (isError) {
+			toast.error(message);
+		}
+
 		if (!user) {
 			navigate('/login');
 		}
+
+		dispatch(getShoppingStore());
 	}, [user, navigate]);
 
 	return (
