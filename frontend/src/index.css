@@ -12,39 +12,63 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1rem;
 	color: #121212;
-	height: 100vh;
+	/* height: 100vh; */
 }
 
 h1 {
-	font-size: clamp(6.561rem, 15vw, 7.873rem);
+	font-size: clamp(3.031rem, 5vw, 4.546rem);
 	line-height: 1.65;
 	margin-bottom: 1.25rem;
 }
 
 h2 {
-	font-size: clamp(3.645em, 15vw, 4.374rem);
+	font-size: clamp(2.025em, 5vw, 3.031rem);
 	line-height: 1.55;
 	margin-bottom: 1.25rem;
 }
 
 h3 {
-	font-size: clamp(2.025rem, 15vw, 2.43rem);
+	font-size: clamp(1.35rem, 5vw, 2.025rem);
 	line-height: 1.45;
 	margin-bottom: 0.625rem;
 }
 
 h4 {
-	font-size: clamp(1.125rem, 15vw, 1.35rem);
+	font-size: clamp(1.125rem, 5vw, 1.35rem);
 	line-height: 1.35;
 }
 
-p {
+p,
+a {
 	font-size: clamp(1rem, 15vw, 1.125rem);
 	line-height: 1.25;
+	color: inherit;
+	text-decoration: none;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	outline: 0;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: inherit;
+	appearance: button;
+	background-color: #fff;
+	border-radius: 0.25rem;
+	padding: 0.25rem;
+	cursor: pointer;
+}
+
+.btn svg {
+	margin-right: 0.5rem;
 }
 
 main {
-	height: 100vh;
+	background-color: #bfd9e4;
+	padding-top: 2rem;
 }
 
 .container {
@@ -52,23 +76,48 @@ main {
 	max-width: 1140px;
 	margin: 0 auto;
 	text-align: center;
+	padding: 0.5rem 1.5rem;
 }
 
 .main__header {
 	background-color: #4d6975;
 	height: 25vh;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
+	padding: 0.5rem 1.5rem;
 }
 
-.main__navbar {
-	width: 40vw;
+@media (max-width: 768px) {
+	.main__header {
+		flex-direction: column;
+	}
 }
+
+.main__header__logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: #4d6975;
+	background-color: #bfd9e4;
+	border-radius: 0.25rem;
+	padding: 0.25rem;
+}
+
+.main__header__logo a {
+	text-decoration: none;
+}
+
+/* .main__navbar {
+	width: 45vw;
+} */
 
 .main__navbar ul {
 	list-style: none;
 	display: flex;
+	width: 45vw;
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
@@ -78,7 +127,7 @@ main {
 	text-align: center;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 768px) {
 	.main__navbar ul {
 		flex-direction: column;
 		justify-content: center;
@@ -86,24 +135,9 @@ main {
 	}
 }
 
-.btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: transparent;
-	border: 0;
-	outline: 0;
-	font-size: 1.6rem;
-	font-weight: 700;
-	color: #4d6975;
-	appearance: button;
+.main__navbar .btn {
 	background-color: #bfd9e4;
-	border-radius: 0.25rem;
-	padding: 0.25rem;
-}
-
-.btn svg {
-	margin-right: 0.5rem;
+	color: #4d6975;
 }
 
 .main__navbar a {
@@ -111,7 +145,7 @@ main {
 	align-items: center;
 	text-align: center;
 	text-decoration: none;
-	font-size: 1.6rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 	color: #bfd9e4;
 	padding: 0.5rem;
@@ -128,4 +162,102 @@ main {
 .main__navbar--active {
 	color: #d3e7f0;
 	border-color: #d3e7f0;
+}
+
+.heading h1 {
+	color: #4d6975;
+	text-transform: capitalize;
+}
+
+.form {
+	padding: 0.5rem 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.form form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 75vw;
+	height: 100%;
+}
+
+.form__form__control {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.form__form__control input,
+.form__form__control label {
+	padding: 0.5rem;
+	text-align: left;
+	justify-content: center;
+	border: 0;
+	border-radius: 0.25rem;
+	color: #4d6975;
+	font-weight: 700;
+}
+
+.form__form__control input {
+	width: 50%;
+}
+
+.form__form__control label {
+	width: 25%;
+	border: 1px solid #4d6975;
+	border-radius: 0.25rem;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+.form__form__control .btn {
+	background-color: #4d6975;
+	color: #bfd9e4;
+	text-transform: capitalize;
+	width: 15vw;
+	margin-left: auto;
+}
+
+@media (max-width: 768px) {
+	.form__form__control {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.form__form__control input,
+	.form__form__control label {
+		text-align: center;
+		width: 100%;
+	}
+
+	.form__form__control label {
+		margin-bottom: 0.5rem;
+	}
+
+	.form__form__control .btn {
+		width: 100%;
+	}
+}
+
+.main__footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 15vh;
+	background-color: #4d6975;
+	color: #bfd9e4;
+	font-weight: 700;
+	padding: 0.5rem 1.5rem;
+}
+
+.main__footer p {
+	text-align: center;
 }

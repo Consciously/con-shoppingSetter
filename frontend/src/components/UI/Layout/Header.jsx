@@ -4,11 +4,11 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
 function Header() {
 	return (
 		<header className='main__header'>
+			<div className='main__header__logo'>
+				<Link to='/'>Shopping Setter</Link>
+			</div>
 			<nav className='main__navbar'>
 				<ul>
-					<li>
-						<Link to='/'>Dashboard</Link>
-					</li>
 					<li>
 						<button className='btn'>
 							<FaSignOutAlt /> Logout
