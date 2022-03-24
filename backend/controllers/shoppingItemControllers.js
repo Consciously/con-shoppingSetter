@@ -14,14 +14,30 @@ const getShoppingItems = asyncHandler(async (req, res) => {
 		select: ['store']
 	});
 
-	const shoppingItemsModified = shoppingItems.reduce(
-		(entries, value, _, arr) => ({
-			...entries,
-			store: value.store,
-			entries: [...arr, value.entry]
-		}),
-		[]
-	);
+	// const shoppingItemsModified = shoppingItems.reduce(
+	// 	(entries, value, _, arr) => {
+	// 		console.log(value); /* ({
+	// 		...entries,
+	// 		// store: value.store,
+	// 		entries: [...arr, value.entry]
+	// 	}) */
+	// 	},
+	// 	[]
+	// );
+
+	const shoppingItemsModified = shoppingItems
+		.map(({ store, entry }) => ({
+			store,
+			entry
+		}))
+		.reduce((groupedStores, item) => {
+			if (!groupedStores[item.store._id]) {
+				groupedStores[item.store._id] = [];
+			}
+
+			groupedStores[item.store._id].push(item.entry);
+			return groupedStores;
+		}, {});
 
 	res.status(200).json({
 		count: shoppingItemsModified.length,

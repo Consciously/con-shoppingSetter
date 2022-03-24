@@ -2,6 +2,7 @@ import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import ShoppingUser from '../models/shoppingUserModel.js';
+import ShoppingStore from '../models/shoppingStoreModel.js';
 
 // @desc Register new user
 // @route GET /api/shoppingUsers/register
@@ -28,6 +29,7 @@ const registerShoppingUser = asyncHandler(async (req, res) => {
 	const hashedPassword = await bcrypt.hash(password, salt);
 
 	// Create User
+
 	const shoppingUser = await ShoppingUser.create({
 		name,
 		email,
@@ -52,7 +54,7 @@ const registerShoppingUser = asyncHandler(async (req, res) => {
 // @access Public
 
 const loginShoppingUser = asyncHandler(async (req, res) => {
-	const { email, password } = req.body;
+	const { email, password, storeId } = req.body;
 
 	if (!email || !password) {
 		res.status(400);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = '/api/shoppingStores';
+const API_URL = '/api/shoppingStores/';
 
 // Create new store
 const createShoppingStore = async (shoppingStoreData, token) => {
@@ -16,7 +16,7 @@ const createShoppingStore = async (shoppingStoreData, token) => {
 };
 
 // Get user shopping store
-const getShoppingStore = async token => {
+const getShoppingStores = async token => {
 	const config = {
 		headers: {
 			Authorization: `Bearer ${token}`
@@ -58,11 +58,11 @@ const deleteShoppingStore = async (storeId, token) => {
 	return response.data;
 };
 
-const shoppingStoreService = {
+const shoppingStoresService = {
 	createShoppingStore,
-	getShoppingStore,
+	getShoppingStores,
 	updateShoppingStore,
 	deleteShoppingStore
 };
 
-export default shoppingStoreService;
+export default shoppingStoresService;

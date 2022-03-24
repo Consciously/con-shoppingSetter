@@ -12,11 +12,7 @@ const ShoppingItemSchema = mongoose.Schema(
 			required: [true, 'Please add a text value']
 		}
 	},
-	{ timestamps: true, versionKey: false },
-	{
-		toJSON: { virtuals: true },
-		toObject: { virtuals: true }
-	}
+	{ timestamps: true, versionKey: false }
 );
 
 export default mongoose.model('ShoppingItem', ShoppingItemSchema);

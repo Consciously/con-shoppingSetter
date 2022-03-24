@@ -1,41 +1,39 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import {
-	getShoppingStore,
-	reset
-} from '../features/shoppingStore/shoppingStoreSlice';
+import { reset } from '../features/auth/authSlice';
+import ShoppingLists from '../components/ShoppingLists';
 
 function Dashboard() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { user } = useSelector(state => state.auth);
-	const { shoppingStore, isLoading, isError, message } = useSelector(
-		state => state.shoppingStore
-	);
-
-	console.log(shoppingStore);
 
 	useEffect(() => {
-		if (isError) {
-			toast.error(message);
-		}
-
 		if (!user) {
 			navigate('/login');
 		}
 
-		dispatch(getShoppingStore());
-	}, [user, navigate]);
+		return () => {
+			dispatch(reset());
+		};
+	}, [user, navigate, dispatch]);
 
 	return (
 		<>
 			<section className='heading'>
-				<h1>Welcome {user && user.name}</h1>
-				<p>Shopping Dashboard</p>
+				<div className='container'>
+					<h1>Welcome {user && user.name}</h1>
+					<p>Shopping Dashboard</p>
+				</div>
 			</section>
-			<section className='content'></section>
+			<section className='content'>
+				<div className='container'>
+					<div className='content__inner'>
+						<ShoppingLists />
+					</div>
+				</div>
+			</section>
 		</>
 	);
 }

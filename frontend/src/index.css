@@ -97,7 +97,6 @@ main {
 	width: 100%;
 	max-width: 1140px;
 	margin: 0 auto;
-	text-align: center;
 	padding: 0.5rem 1.5rem;
 }
 
@@ -189,6 +188,11 @@ main {
 .heading h1 {
 	color: #4d6975;
 	text-transform: capitalize;
+	text-align: center;
+}
+
+.heading p {
+	text-align: center;
 }
 
 .form {
@@ -267,6 +271,20 @@ main {
 	.form__form__control .btn {
 		width: 100%;
 	}
+}
+
+.content__inner {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 1rem;
+}
+
+.content__element {
+	background-color: red;
+}
+
+.content__element h3 {
+	text-align: center;
 }
 
 .main__footer {
